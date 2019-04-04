@@ -1,0 +1,24 @@
+﻿@model UserProjectPart1.Models.Movies
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2><b>Movie Details</b></h2>
+<br />
+
+
+<div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+
+
+        <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.MovieId)</b>: @Html.DisplayFor(model => model.MovieId)</li>
+        <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.MovieName)</b>: @Html.DisplayFor(model => model.MovieName)</li>
+        <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.MoviePrice)</b>: @Html.DisplayFor(model => model.MoviePrice)</li>
+        <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.AuditoriumId)</b>: @Html.DisplayFor(model => model.AuditoriumId)</li>
+    </ul>
+</div>
+<br />
+<a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back To List</a>
+
+<a asp-controller="BookMovie" asp-action="Book" class="btn btn-primary">Book Movie</a>

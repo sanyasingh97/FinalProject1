@@ -1,0 +1,44 @@
+﻿@model UserProject.Models.Multiplex
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2><b>CREATE</b></h2>
+<br />
+@*<form asp-action="Create" asp-controller="Multiplex">
+        <label asp-for="MultiplexName"></label>
+        <input type="text" asp-for="MultiplexName" />
+
+        <label asp-for="MultiplexDescription"></label>
+        <input type="text" asp-for="MultiplexDescription" />
+        <br />
+        <input type="submit" value="Create Multiplex" />
+
+    </form>*@
+
+<form asp-action="Create" asp-controller="Multiplex">
+    
+    <div class="form-group">
+        <label asp-for="LocationId"><b>Location Name</b></label>
+        <select class="custom-select my-1 mr-sm-2" asp-for="LocationId" asp-items="ViewBag.location"></select>
+      
+    </div>
+    <div class="form-group">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <label asp-for="MultiplexName"><b>Multiplex Name</b></label>
+        <input type="text" class="form-control" asp-for="MultiplexName" placeholder="Enter Multiplex Name">
+        <span asp-validation-for="MultiplexName" class="text-danger"></span>
+    </div>
+        <div class="form-group">
+            <label asp-for="MultiplexDescription"><b>Multiplex Description</b></label>
+            <input type="text" class="form-control" asp-for="MultiplexDescription" placeholder="Enter Multiplex Description">
+            <span asp-validation-for="MultiplexDescription" class="text-danger"></span>
+        </div>
+        <br />
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        @*@Html.ActionLink("back to list", "Index")*@
+        <a asp-controller="Multiplex" asp-action="Index" class="btn btn-light"><b>Back To List</b></a>
+</form>
+

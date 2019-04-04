@@ -1,0 +1,49 @@
+﻿@model IEnumerable<UserProject.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2><b>Index</b></h2>
+
+<p>
+    <a asp-controller="Movie" asp-action="Create" class="btn btn-primary">Create New Movie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovieName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuditoriumId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuditoriumId)
+            </td>
+            <td>
+                <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.MovieId" class="btn btn-info">Details</a>
+                <a asp-controller="Movie" asp-action="Edit" asp-route-id="@item.MovieId" class="btn btn-success">Edit</a>
+                <a asp-controller="Movie" asp-action="Delete" asp-route-id="@item.MovieId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

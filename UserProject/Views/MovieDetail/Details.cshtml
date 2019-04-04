@@ -1,0 +1,58 @@
+﻿@model UserProject.Models.MovieDetail
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2><b>DETAILS</b></h2>
+<br />
+
+@*@Html.DisplayNameFor(model => model.MovieId);
+    @Html.DisplayFor(model => model.MovieId);
+    <br />
+
+    @Html.DisplayNameFor(model => model.Casting);
+    @Html.DisplayFor(model => model.Casting);
+    <br />
+
+    @Html.DisplayNameFor(model => model.Producer);
+    @Html.DisplayFor(model => model.Producer);
+    <br />
+
+    @Html.DisplayNameFor(model => model.Director);
+    @Html.DisplayFor(model => model.Director);
+
+    @Html.DisplayNameFor(model => model.MovieType);
+    @Html.DisplayFor(model => model.MovieType);
+    <br />
+
+    @Html.DisplayNameFor(model => model.MovieImage);
+    @Html.DisplayFor(model => model.MovieImage);
+
+    @Html.DisplayNameFor(model => model.MovieDuration);
+    @Html.DisplayFor(model => model.MovieDuration);
+    <br />
+
+    @Html.DisplayNameFor(model => model.Price);
+    @Html.DisplayFor(model => model.Price);
+    <br />
+    <br />*@
+
+<div class="col-md-12">
+    <div class="card">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.MovieId)</b>: @Html.DisplayFor(model => model.MovieId)</li>
+            <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.Producer)</b>: @Html.DisplayFor(model => model.Producer)</li>
+            <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.MovieDuration)</b>: @Html.DisplayFor(model => model.MovieDuration)</li>
+            <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.MovieImage)</b>: @Html.DisplayFor(model => model.MovieImage)</li>
+            <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.MovieType)</b>: @Html.DisplayFor(model => model.MovieType)</li>
+           
+        </ul>
+    </div>
+</div>
+<br />
+
+<div class="col-md-12">
+    @*@Html.ActionLink("back to list", "Index")*@
+    <a asp-controller="MovieDetail" asp-action="Index" class="btn btn-primary">Back To List</a>
+</div>

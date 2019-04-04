@@ -1,0 +1,22 @@
+﻿@model UserProject.Models.Location
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2><b>CREATE</b></h2>
+<br />
+
+
+<form asp-action="Create" asp-controller="Location">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label for="LocationName"><b>Location Name</b></label>
+        <input type="text" asp-for="LocationName" class="form-control" placeholder="Enter Location Name">
+        <span asp-validation-for="LocationName" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+    @*@Html.ActionLink("back to list", "Index")*@
+    <a asp-controller="Location" asp-action="Index" class="btn btn-light"><b>Back To List</b></a>
+</form>

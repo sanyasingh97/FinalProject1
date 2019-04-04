@@ -1,0 +1,39 @@
+﻿@model UserProject.Models.Movie
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2><b>CREATE</b></h2>
+<br />
+
+
+<form asp-action="Create" asp-controller="Movie">
+    <div class="form-group">
+        <label asp-for="AuditoriumId"><b>Auditorium Name</b></label>
+        <select class="custom-select my-1 mr-sm-2" asp-for="AuditoriumId" asp-items="ViewBag.auditorium"></select>
+    </div>
+    <label asp-for="MovieName"><b>Movie Name</b></label>
+    <input type="text" class="form-control" asp-for="MovieName" placeholder="Enter Movie Name">
+    <div>
+        <label asp-for="MoviePrice"><b>Movie Price</b></label>
+        <input type="text" class="form-control" asp-for="MoviePrice" placeholder="Enter Movie Price">
+    </div>
+    <div>
+        <label asp-for="MovieDescription"><b>Movie Description</b></label>
+        <input type="text" class="form-control" asp-for="MovieDescription" placeholder="Enter Movie Description">
+    </div>
+    <div>
+        <label asp-for="MovieDuration"><b>Movie Duration</b></label>
+        <input type="text" class="form-control" asp-for="MovieDuration" placeholder="Enter Movie Duration">
+    </div>
+    <div>
+        <label asp-for="MovieImage"><b>Movie Image</b></label>
+        <input type="text" class="form-control" asp-for="MovieImage" placeholder="Enter Movie Image">
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+    @*@Html.ActionLink("back to list", "Index")*@
+    <a asp-controller="Movie" asp-action="Index" class="btn btn-light"><b>Back To List</b></a>
+</form>
+

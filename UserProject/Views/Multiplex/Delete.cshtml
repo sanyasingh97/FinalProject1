@@ -1,0 +1,28 @@
+﻿@model UserProject.Models.Multiplex
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2><b>DELETE</b></h2>
+<br />
+<h4>Are you sure you want to delete this?</h4>
+<br />
+<div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+
+        <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.MultiplexName)</b>: @Html.DisplayFor(model => model.MultiplexName)</li>
+        <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.MultiplexDescription)</b>: @Html.DisplayFor(model => model.MultiplexDescription)</li>
+        <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.LocationId)</b>: @Html.DisplayFor(model => model.LocationId)</li>
+    </ul>
+</div>
+<br />
+
+@using (Html.BeginForm("Delete", "Multiplex", FormMethod.Post))
+{
+    <p>
+        <input type="submit" value="Delete" , class="btn btn-danger" />
+        @*@Html.ActionLink("back to list", "Index")*@
+        <a asp-controller="Multiplex" asp-action="Index" class="btn btn-primary">Back To List</a>
+    </p>
+}

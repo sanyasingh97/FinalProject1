@@ -1,0 +1,36 @@
+﻿@model UserProject.Models.Auditorium
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2><b>EDIT</b></h2>
+<br />
+<form asp-action="Edit" asp-controller="Auditorium">
+    <div class="form-group">
+        <label asp-for="AuditoriumName"><b>Auditorium Name</b></label>
+        <input type="text" class="form-control" asp-for="AuditoriumName" placeholder="Enter Auditorium Name">
+
+        <label asp-for="AuditoriumDescription"><b>Auditorium Description</b></label>
+        <input type="text" class="form-control" asp-for="AuditoriumDescription" placeholder="Enter Auditorium Description">
+
+        <label asp-for="Seats"><b>Seats</b></label>
+        <input type="text" class="form-control" asp-for="Seats" placeholder="Enter Seats">
+
+        <label asp-for="Time1"><b>Time1</b></label>
+        <input type="text" class="form-control" asp-for="Time1" placeholder="Enter Time1">
+
+        <label asp-for="Time2"><b>Time2</b></label>
+        <input type="text" class="form-control" asp-for="Time2" placeholder="Enter Time2">
+
+        <label asp-for="Time3"><b>Time3</b></label>
+        <input type="text" class="form-control" asp-for="Time3" placeholder="Enter Time3">
+
+        <label asp-for="MultiplexId"><b>MultiplexId</b></label>
+        <input type="text" class="form-control" asp-for="MultiplexId" placeholder="Enter MultiplexId">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-controller="Auditorium" asp-action="Index" class="btn btn-light"><b>Back To List</b></a>
+</form>
+

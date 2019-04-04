@@ -1,0 +1,37 @@
+﻿@model UserProject.Models.MovieDetail
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2><b>EDIT</b></h2>
+<br />
+<form asp-action="Edit" asp-controller="MovieDetail">
+    <div class="form-group">
+
+        <label asp-for="Casting"><b>Casting</b></label>
+        <input type="text" class="form-control" asp-for="Casting" placeholder="Enter Cast">
+
+        <label asp-for="Producer"><b>Producer</b></label>
+        <input type="text" class="form-control" asp-for="Producer" placeholder="Enter Producer">
+
+        <label asp-for="Director"><b>Director</b></label>
+        <input type="text" class="form-control" asp-for="Director" placeholder="Enter Director">
+
+        <label asp-for="MovieType"><b>MovieType</b></label>
+        <input type="text" class="form-control" asp-for="MovieType" placeholder="Enter MovieType">
+
+        <label asp-for="MovieImage"><b>MovieImage</b></label>
+        <input type="text" class="form-control" asp-for="MovieImage" placeholder="Enter MovieImage">
+
+        <label asp-for="MovieDuration"><b>Movie Duration</b></label>
+        <input type="text" class="form-control" asp-for="MovieDuration" placeholder="Enter Movie Duration">
+
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-controller="MovieDetail" asp-action="Index" class="btn btn-light"><b>Back To List</b></a>
+</form>
+
+
+
+

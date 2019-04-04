@@ -1,0 +1,47 @@
+﻿@model IEnumerable<UserProject.Models.Multiplex>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2><b>Index</b></h2>
+<p>
+    <a asp-controller="Multiplex" asp-action="Create" class="btn btn-primary">Create New Multiplex</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MultiplexId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MultiplexName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationId)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.MultiplexId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.MultiplexName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.LocationId)
+            </td>
+            <td>
+                <a asp-controller="Multiplex" asp-action="Details" asp-route-id="@item.MultiplexId" class="btn btn-info">Details</a>
+                <a asp-controller="Multiplex" asp-action="Edit" asp-route-id="@item.MultiplexId" class="btn btn-success">Edit</a>
+                <a asp-controller="Multiplex" asp-action="Delete" asp-route-id="@item.MultiplexId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

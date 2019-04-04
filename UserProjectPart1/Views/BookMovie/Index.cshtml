@@ -1,0 +1,44 @@
+﻿@model UserProjectPart1.Models.Movies
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h3>BookMovie Page</h3>
+<table class=" table table-hover">
+    <tr>
+        <th>Options</th>
+        <th>Id</th>
+        <th>Name</th>
+        @*<th>Photo</th>*@
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+    </tr>
+    @foreach (var item in ViewBag.bookmovie)
+    {
+        <tr>
+            <td><a asp-controller="BookMovie" asp-action="remove" asp-route-id="@item.Movies.MovieId">Remove</a></td>
+            <td>@item.Movies.MovieId</td>
+            <td>@item.Movies.MovieName</td>
+            <td>@item.Movies.MoviePrice</td>
+            @*<td><img src="@item.Multiplexes.MultiplexPhoto" width="60"/></td>*@
+
+            <td>@(item.Quantity)</td>
+            <td>@(item.Movies.MoviePrice * item.Quantity)</td>
+
+        </tr>
+    }
+    <tr>
+        <td align="right" colspan="6">Sum</td>
+        <td>
+            @ViewBag.total
+        </td>
+    </tr>
+</table>
+<br>
+<a asp-controller="Home" asp-action="Index">Continue Booking</a>
+<br />
+<a asp-controller="BookMovie" asp-action="Checkout">Checkout</a>
+
+

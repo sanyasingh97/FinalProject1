@@ -1,0 +1,31 @@
+﻿@model UserProject.Models.Movie
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2><b>DELETE</b></h2>
+<br />
+<h4>Are you sure you want to delete this?</h4>
+</br>
+<div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+
+        <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.MovieName)</b>: @Html.DisplayFor(model => model.MovieName)</li>
+        <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.MoviePrice)</b>: @Html.DisplayFor(model => model.MoviePrice)</li>
+        <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.MovieDescription)</b>: @Html.DisplayFor(model => model.MovieDescription)</li>
+        <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.MovieDuration)</b>: @Html.DisplayFor(model => model.MovieDuration)</li>
+        <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.MovieImage)</b>: @Html.DisplayFor(model => model.MovieImage)</li>
+        <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.AuditoriumId)</b>: @Html.DisplayFor(model => model.AuditoriumId)</li>
+    </ul>
+</div>
+<br />
+
+@using (Html.BeginForm("Delete", "Movie", FormMethod.Post))
+{
+    <p>
+        <input type="submit" value="Delete" , class="btn btn-danger" />
+        @*@Html.ActionLink("back to list", "Index")*@
+        <a asp-controller="Movie" asp-action="Index" class="btn btn-primary">Back To List</a>
+    </p>
+}

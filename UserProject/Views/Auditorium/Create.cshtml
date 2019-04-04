@@ -1,0 +1,35 @@
+﻿@model UserProject.Models.Auditorium
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2><b>CREATE</b></h2>
+<br />
+
+
+<form asp-action="Create" asp-controller="Auditorium">
+    <div class="form-group">
+            <label asp-for="MultiplexId"><b>Multiplex Name</b></label>
+            <select class="custom-select my-1 mr-sm-2" asp-for="MultiplexId" asp-items="ViewBag.multiplex"></select>
+        </div>
+        <label for="AuditoriumName"><b>Auditorium Name</b></label>
+        <input type="text" asp-for="AuditoriumName" class="form-control" placeholder="Enter Auditorium Name">
+        <label for="AuditoriumDescription"><b>Auditorium Description</b></label>
+        <input type="text" asp-for="AuditoriumDescription" class="form-control" placeholder="Enter Auditorium Description">
+        <label for="Seats"><b>Seats</b></label>
+        <input type="text" asp-for="Seats" class="form-control" placeholder="Enter No.of Seats">
+        <label for="Time1"><b>Time1</b></label>
+        <input type="text" asp-for="Time1" class="form-control" placeholder="Enter Time1">
+        <label for="Time2"><b>Time2</b></label>
+        <input type="text" asp-for="Time2" class="form-control" placeholder="Enter Time2">
+        <label for="Time3"><b>Time3</b></label>
+        <input type="text" asp-for="Time3" class="form-control" placeholder="Enter Time3">
+       
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+    @*@Html.ActionLink("back to list", "Index")*@
+    <a asp-controller="Auditorium" asp-action="Index" class="btn btn-light"><b>Back To List</b></a>
+</form>

@@ -1,0 +1,51 @@
+﻿@model UserProject1.Models.Movies
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/View.cshtml";
+}
+
+
+<style type="text/css">
+    body {
+        background-image: url(https://png.pngtree.com/thumb_back/fw800/20161101/pngtree-Antique-Old-Vintage-Retro-background-photo-206849.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+</style>
+<table class=" table table-hover">
+    <tr>
+        <th>Options</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Photo</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+    </tr>
+    @foreach (var item in ViewBag.bookmovie)
+    {
+        <tr>
+            <td><a asp-controller="BookMovie" asp-action="remove" class="btn btn-primary" asp-route-id="@item.Movies.MovieId">Remove </a></td>
+            <td>@item.Movies.MovieId</td>
+            <td>@item.Movies.MovieName</td>
+            <td><img src="@item.Movies.MovieImage" width="60" /></td>
+            <td>@item.Movies.MoviePrice</td>
+            <td> <a class="btn btn-default" asp-controller="BookMovie" asp-action="Minus" asp-route-id="@item.Movies.MovieId">-</a>@item.Quantity<a class="btn btn-default" asp-controller="BookMovie" asp-action="Plus" asp-route-id="@item.Movies.MovieId">+</a></td>
+          
+            <td>@(item.Movies.MoviePrice * item.Quantity)</td>
+
+        </tr>
+    }
+    <tr>
+        <td align="right" colspan="6"><b>Sum</b></td>
+        <td>
+            @ViewBag.total
+        </td>
+    </tr>
+</table>
+<br>
+
+<a asp-controller="Customer" asp-action="Index" class="btn btn-success">Continue Booking</a>
+
+
+

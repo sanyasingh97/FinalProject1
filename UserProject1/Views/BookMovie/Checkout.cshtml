@@ -1,0 +1,104 @@
+﻿@model UserProject1.Models.UserDetails
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Checkout</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="" alt="" width="72" height="72">
+            <img src="https://d3i7tbcp0hzfhm.cloudfront.net/m/mi/m/mc-o0231524/1.JPG"/>
+            <br />
+            <br />
+            <h2><b>USER DETAILS</b></h2>
+            <br />
+            <br />
+        </div>
+        <div class="row">
+            <div class="col-md-4 order-md-2 mb-4">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Your Bookings</span>
+                   
+                </h4>
+                <ul class="list-group mb-3">
+                    @foreach (var item in ViewBag.bookmovie)
+                    {
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0">Movie name</h6>
+                                @item.Movies.MovieName
+                            </div>
+                            <span class="text-muted">
+                                <h6 class="my-0"> Quantity</h6>
+                                @item.Quantity
+                            </span>
+                            <span class="text-muted">
+                                <h6 class="my-0">Movie Price</h6>
+                                @item.Movies.MoviePrice
+                            </span>
+                        </li>
+                    }
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Total (INR)</span>
+                        <strong>@ViewBag.total</strong>
+                    </li>
+                </ul>
+         
+            </div>
+            <div class="col-md-8 order-md-1">
+            
+                <form asp-controller="BookMovie" asp-action="Checkout" method="post" novalidate>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="userName">User Name</label>
+                            <input type="text" asp-for="UserName" class="form-control" placeholder="Username" required>
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="password">Password</label>
+                        <input type="text" asp-for="Password" class="form-control" id="password" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Please enter your password
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email">Email</label>
+                        <input type="email" asp-for="Email" class="form-control" id="Email" placeholder="Email" required>
+                        <div class="invalid-feedback">
+                            Please enter your email address
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phonenumber">Phone Number</label>
+                        <input type="text" asp-for="ContactNo" class="form-control" id="phonenumber" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Please enter your valid phone number
+                        </div>
+                    </div>
+
+                    <hr class="mb-4">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                    @*<a asp-controller="BookMovie" asp-action="Invoice"class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout<a/>*@
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

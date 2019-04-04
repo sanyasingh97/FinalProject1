@@ -1,0 +1,64 @@
+﻿@model UserProject1.Models.UserDetails
+
+
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<style type="text/css">
+
+
+    body {
+        background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiG6ll6syMc948qlchoR62Lt72HactAC9Hs1DZQiIou8EQ-6-v );
+        background-size: cover;
+        background-attachment: fixed;
+    }
+</style>
+<!------ Include the above in your HEAD tag ---------->
+<div class="container">
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Sign In</div>
+
+            </div>
+            <div style="padding-top:30px" class="panel-body">
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+            
+                    <p>@ViewBag.Error</p>
+               
+                    <form id="loginform" class="form-horizontal" role="form" method="post" asp-controller="Customer" asp-action="Login">
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <label asp-for="UserName"><b>Username</b></label>
+                        <input type="text" class="form-control" asp-for="UserName" placeholder="Enter username">
+                    </div>
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <label asp-for="Password"><b> Password</b></label>
+                        <input type="password" class="form-control" asp-for="Password" placeholder="Enter password">
+                    </div>
+
+                    <div style="margin-top:10px" class="form-group">
+                        <!-- Button -->
+                        <div class="col-sm-12 controls">
+                            <button class="btn btn-lg btn-primary btn-success" type="submit">Sign in</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12 control">
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
+                                Don't have an account!
+                                <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                    <a asp-controller="Customer" asp-action="Register" class="btn btn-lg btn-primary-btn-danger"><b>Sign Up Here</b></a>
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>

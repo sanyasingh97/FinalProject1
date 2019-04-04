@@ -1,0 +1,37 @@
+﻿@model UserProject.Models.Movie
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2><b>EDIT</b></h2>
+<br />
+<form asp-action="Edit" asp-controller="Movie">
+    <div class="form-group">
+        <label asp-for="MovieName"><b>Movie Name</b></label>
+        <input type="text" class="form-control" asp-for="MovieName" placeholder="Enter Movie Name">
+
+        <label asp-for="MoviePrice"><b>Movie Price</b></label>
+        <input type="text" class="form-control" asp-for="MoviePrice" placeholder="Enter Movie Price">
+        <label asp-for="MovieDescription"><b>Movie Description</b></label>
+        <input type="text" class="form-control" asp-for="MovieDescription" placeholder="Enter Movie Description">
+        <label asp-for="MovieDuration"><b>Movie Duration</b></label>
+        <input type="text" class="form-control" asp-for="MovieDuration" placeholder="Enter Movie Duration">
+        <label asp-for="MovieImage"><b>Movie Image</b></label>
+        <input type="text" class="form-control" asp-for="MovieImage" placeholder="Enter Movie Image">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-controller="Multiplex" asp-action="Index" class="btn btn-light"><b>Back To List</b></a>
+</form>
+
+@*@using (Html.BeginForm("Edit", "Multiplex", FormMethod.Post))
+    {
+
+        @Html.LabelFor(model => model.MultiplexName)
+        @Html.EditorFor(model => model.MultiplexName)
+        <br />
+
+
+        <br />*@
+

@@ -1,0 +1,31 @@
+﻿@model UserProject.Models.Multiplex
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2><b>EDIT</b></h2>
+<br />
+<form asp-action="Edit" asp-controller="Multiplex">
+    <div class="form-group">
+        <label asp-for="MultiplexName"><b>Multiplex Name</b></label>
+        <input type="text" class="form-control" asp-for="MultiplexName" placeholder="Enter Multiplex Name">
+
+        <label asp-for="MultiplexDescription"><b>Multiplex Description</b></label>
+        <input type="text" class="form-control" asp-for="MultiplexDescription" placeholder="Enter Multiplex Description">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a asp-controller="Multiplex" asp-action="Index" class="btn btn-light"><b>Back To List</b></a>
+</form>
+
+@*@using (Html.BeginForm("Edit", "Multiplex", FormMethod.Post))
+    {
+
+        @Html.LabelFor(model => model.MultiplexName)
+        @Html.EditorFor(model => model.MultiplexName)
+        <br />
+
+
+        <br />*@
+

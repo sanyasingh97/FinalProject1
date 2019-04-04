@@ -1,0 +1,34 @@
+﻿@model UserProject.Models.Location
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2><b>Location Details</b></h2>
+<br />
+
+@*@Html.DisplayNameFor(model => model.MultiplexId);
+    @Html.DisplayFor(model => model.MultiplexId);
+    <br />
+
+    @Html.DisplayNameFor(model => model.MultiplexName);
+    @Html.DisplayFor(model => model.MultiplexName);
+    <br />
+
+    @Html.DisplayNameFor(model => model.MultiplexDescription);
+    @Html.DisplayFor(model => model.MultiplexDescription);
+    <br />*@
+
+<div class="col-md-12">
+    <div class="card">
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.LocationId)</b>: @Html.DisplayFor(model => model.LocationId)</li>
+                <li class="list-group-item"><b>@Html.DisplayNameFor(model => model.LocationName)</b>: @Html.DisplayFor(model => model.LocationName)</li>
+            </ul>
+        </div>
+    </div>
+        <br />
+        <div class="col-md-12">
+            <a asp-controller="Location" asp-action="Index" class="btn btn-primary">Back To List</a>
+            </div>
