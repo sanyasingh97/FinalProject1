@@ -24,17 +24,13 @@
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Home" asp-action="Upcoming">Upcoming</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Location" asp-action="Index">Location</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Home" asp-action="Contact">Contact Us</a>
                 </li>
             </ul>
             @if (Context.Session.GetString("uid") == null)
             {
-                <a class="btn btn-info" asp-action="Index" asp-controller="Customer">Sign In</a>
+                <a class="btn btn-info" asp-action="DirectLogin" asp-controller="Customer">Sign In</a>
 
             }
             else

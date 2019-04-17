@@ -1,14 +1,13 @@
 ﻿@model UserProject1.Models.Bookings
 
 @{
-    ViewData["Title"] = "BookingHistory";
+    
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h2>BookingHistory</h2>
 
 <div>
- 
+    <h4>Bookings</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -46,6 +45,5 @@
     </dl>
 </div>
 <div>
-    @*<a asp-action="BookingDetails" asp-controller="Ticket">BookingDetails</a> |*@
-    <a asp-action="Index" asp-controller="Home">Back to List</a>
+    <a asp-action="Dashboard" asp-controller="Customer">Back to Home</a>
 </div>

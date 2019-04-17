@@ -45,34 +45,47 @@ namespace UserProject1.Controllers
         }
         [Route("DirectLogin")]
         [HttpPost]
-        public IActionResult DirectLogin(string username, string password)
+        public IActionResult DirectLogin([Bind("UserName", "Password")]string username, string password)
         {
-            var user = context.UserDetails.Where(x => x.UserName == username && x.Password == password).SingleOrDefault();
-            HttpContext.Session.SetString("uid", (user.UserDetailId).ToString());
-            HttpContext.Session.SetString("uname", (user.UserName).ToString());
-            return RedirectToAction("Index", "Location");
+            if (ModelState.IsValid)
+            {
+                var user = context.UserDetails.Where(x => x.UserName == username && x.Password == password).SingleOrDefault();
+                HttpContext.Session.SetString("uid", (user.UserDetailId).ToString());
+                HttpContext.Session.SetString("uname", (user.UserName).ToString());
+                return RedirectToAction("Index1", "Home");
+
+            }
+            return View();
         }
 
         [Route("Index")]
 
         [HttpPost]
-        public ActionResult Index(string username, string password)
+        public ActionResult Index([Bind("UserName","Password")]string username, string password)
         {
-            var user = context.UserDetails.Where(x => x.UserName == username && x.Password == password).SingleOrDefault();
-            if (user == null)
+            if(username == null && password == null)
             {
-                ViewBag.Error = "Invalid Credentials";
+                ViewBag.Error = "Enter Your Credentials";
                 return RedirectToAction("Index", "Customer");
             }
             else
             {
-                HttpContext.Session.SetString("uid", (user.UserDetailId).ToString());
-                HttpContext.Session.SetString("uname", (user.UserName).ToString());
-                return RedirectToAction("Checkout", "BookMovie");
+                var user = context.UserDetails.Where(x => x.UserName == username && x.Password == password).SingleOrDefault();
+                if (user == null)
+                {
+                    ViewBag.Error = "Invalid Credentials";
+                    return RedirectToAction("Index", "Customer");
+                }
+                else
+                {
+                    HttpContext.Session.SetString("uid", (user.UserDetailId).ToString());
+                    HttpContext.Session.SetString("uname", (user.UserName).ToString());
+                    return RedirectToAction("Checkout", "BookMovie");
+                }
+                
+            }
+            
         }
-        }
-        
-
         
         [Route("movies")]
         public IActionResult Movies(int id)
@@ -88,7 +101,7 @@ namespace UserProject1.Controllers
         {
             HttpContext.Session.Remove("uid");
             HttpContext.Session.Remove("uname");
-            return RedirectToAction("Index", "Location");
+            return RedirectToAction("Index1", "Home");
         }
 
         [Route("ChangePassword")]
@@ -136,7 +149,15 @@ namespace UserProject1.Controllers
         [Route("BookingDetails")]
         public IActionResult BookingDetails()
         {
-            return View();
+            int id = int.Parse(HttpContext.Session.GetString("uid"));
+          
+
+            var c = context.Bookings.Where(x => x.UserDetailId == id).ToList();
+          
+
+           
+           
+            return View(c);
         }
   
     }

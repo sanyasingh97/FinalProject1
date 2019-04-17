@@ -56,17 +56,21 @@ namespace UserProject1.Controllers
         {
             List<Item> bookmovie = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "bookmovie");
             int index = isExist(id);
-            if (index != -1)
-            {
-                bookmovie[index].Quantity--;
-            }
-            else
-            {
-                bookmovie.Add(new Item { Movies = context.Movies.Find(id), Quantity = 1 });
-            }
             bookmovie.RemoveAt(index);
             SessionHelper.SetObjectAsJson(HttpContext.Session, "bookmovie", bookmovie);
-            return RedirectToAction("GoBack");
+
+            int i = 0;
+            foreach(var item in bookmovie)
+            {
+                i++;
+            }
+            if (bookmovie == null)
+            {
+                HttpContext.Session.Remove("bookmovie");
+                return View("GoBack");
+            }
+
+            return RedirectToAction("Index");
         }
         [Route("goback")]
         public IActionResult GoBack()
@@ -179,12 +183,10 @@ namespace UserProject1.Controllers
         public IActionResult Checkout(UserDetails userDetails,Bookings bookings,  string stripeEmail, string stripeToken)
         {
             int userId = Convert.ToInt32(TempData["uid"]);
-
-
+            
             ViewBag.bookmovie = TempData["total"];
             //ViewBag.total = bookmovie.Sum(item => item.Movies.MoviePrice * item.Quantity);
-
-
+            
             UserDetails user = context.UserDetails.Where(u => u.UserDetailId == userId).SingleOrDefault();
             //Bookings book = context.Bookings.Where(b => b.BookingId == bookingId).SingleOrDefault();
 
@@ -276,7 +278,9 @@ namespace UserProject1.Controllers
             ViewBag.user = user;
             ViewBag.book = book;
             ViewBag.discount = discount;
-            ViewBag.subtotal = ViewBag.Total - discount;
+            ViewBag.subtotal = ViewBag.Total - 100;
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "bookmovie", bookmovie);
+            HttpContext.Session.Remove("bookmovie");
             return View();
 
         }
@@ -317,7 +321,7 @@ namespace UserProject1.Controllers
 
         [Route("register")]
         [HttpPost]
-        public IActionResult Register(UserDetails userDetails)
+        public IActionResult Register([Bind("UserName", "Password", "Email", "ContactNo")]UserDetails userDetails)
         {
             if (ModelState.IsValid)
             {
@@ -336,7 +340,7 @@ namespace UserProject1.Controllers
         }
 
         [HttpPost]
-        public ActionResult DirectRegister(UserDetails userDetails)
+        public ActionResult DirectRegister([Bind("UserName", "Password","Email","ContactNo")] UserDetails userDetails)
         {
             if (ModelState.IsValid)
             {

@@ -1,226 +1,4 @@
-﻿@*@{
-        ViewData["Title"] = "Invoice";
-        Layout = null;
-    }*@
-@*<head>
-        <link rel="stylesheet" href="~/css/NewInvoice.css" />
-
-
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    </head>
-    <!------ Include the above in your HEAD tag ---------->
-
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-
-                <hr>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <h3 class="to">Name:@ViewBag.user.UserName</h3>
-                        <h3 class="to">Email:@ViewBag.user.Email</h3>
-                        <h3 class="to">Contact Number:@ViewBag.user.ContactNo</h3>
-
-
-                    </div>
-                    <div class="col-xs-6 text-right">
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-
-
-                    </div>
-                    <div class="col-xs-6 text-right">
-
-                        <h3 class="to">Booking Date:@ViewBag.book.BookingDate</h3>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><strong>Booking</strong></h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="table-responsive">
-                            <table class="table table-condensed">
-                                <thead>
-                                    <tr>
-
-
-                                        <th class="text-center"><strong>Movie Name</strong></th>
-                                        <th class="text-center"><strong>Movie Price</strong></th>
-                                        <th class="text-right"><strong>Seats</strong></th>
-                                        <th class="text-right"><strong>Amount</strong></th>
-
-
-
-
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- foreach ($order->lineItems as $line) or some such thing here -->
-
-                                    @foreach (var item in ViewBag.bookmovie)
-                                    {
-                                        <tr>
-
-                                            <td class="text-center">@item.Movies.MovieName</td>
-
-                                            <td class="text-center">@(item.Movies.MoviePrice * item.Quantity)</td>
-                                            <td class="text-right">@(item.Quantity)</td>
-                                            <td class="text-right">@ViewBag.total</td>
-
-
-                                        </tr>
-
-                                        <table class=" table table-responsive ">
-                                            <thead>
-                                            <th class="text-right"><strong>Sub Total</strong></th>
-
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="text-right">@(ViewBag.subtotal)</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-                </div>
-                <a asp-controller="Location" asp-action="Index" type="button" class="btn btn-secondary" class="btn btn-secondary">Back To Home</a>
-            </div>
-        </div>
-    </div>*@
-
-
-
-
-@*<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3 main">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img class="img-responsive" alt="Invoce Template" src="https://tccl.libnet.info/images/events/tccl/Movie_night.jpg" />
-                    </div>
-                    <div class="col-md-8 text-right">
-                        <h4 style="color: #F81D2D;"><strong><b>Name:</b> @ViewBag.user.UserName</strong></h4>
-                        <p style="font-size:13px;"><b>Email:</b> @ViewBag.user.Email</p>
-                        <p style="font-size:13px;"><b>Contact Number:</b> @ViewBag.user.ContactNo</>
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                   
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-
-
-                    </div>
-                    <div class="col-xs-6 text-right">
-
-
-                        <p style="font-size:12px;"><b>Auditorium:</b> @ViewBag.book.AudiName</p>
-                        <p style="font-size:12px;"><b>Booking Date:</b> @ViewBag.book.BookingDate</p>
-
-
-                    </div>
-                </div>
-                <br />
-                <div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th><h5>Movie Name</h5></th>
-                                <th><h5>Movie Price</h5></th>
-                                <th><h5>Seats</h5></th>
-                                <th><h5>Amount</h5></th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-
-
-                            @foreach (var item in ViewBag.bookmovie)
-                            {
-                                <tr>
-
-                                    <td class="text-center" style="font-size:12px;">@item.Movies.MovieName</td>
-
-                                    <td class="text-center" style="font-size:12px;">@(item.Movies.MoviePrice * item.Quantity)</td>
-                                    <td class="text-center" style="font-size:12px;">@(item.Quantity)</td>
-
-                                    <td class="text-center" style="font-size:12px;">@ViewBag.total</td>
-
-
-                                </tr>
-
-
-                            }
-
-
-
-
-                            <table class=" table table-responsive ">
-
-                                <tbody>
-                                    <tr class="text-right" style="color: #F81D2D;">
-
-                                        <td class="text-right"><h4><strong><i class="fa fa-usd" aria-hidden="true"></i>Sub Total:  @(ViewBag.subtotal)</strong></h4></td>
-
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                    </table>
-                </div>
-                <div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<style>
-    .main {
-        background: #ffffff;
-        border-bottom: 15px solid #F81D2D;
-        border-top: 15px solid #1E1F23;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        padding: 40px 30px !important;
-        position: relative;
-        box-shadow: 0 1px 21px #808080;
-        font-size: 10px;
-    }
-
-        .main thead {
-            background: #1E1F23;
-            color: #fff;
-        }
-</style>*@
-
-
-
+﻿
 
 
 
@@ -233,18 +11,16 @@
                         <img class="img-responsive" alt="Invoce Template" src="https://tccl.libnet.info/images/events/tccl/Movie_night.jpg" />
                     </div>
                     <div class="col-md-8 text-right">
-                        <h4 style="color: #F81D2D;"><strong>Name:@ViewBag.user.UserName</strong></h4>
-                        <p>Email:@ViewBag.user.Email</p>
-                        <p>Contact Number:@ViewBag.user.ContactNo</p>
+                        @*<h4 style="color: #F81D2D;"><strong>Name:@ViewBag.user.UserName</strong></h4>*@
+                        <p><b>Username:</b> @ViewBag.user.UserName</p>
+                        <p><b>Email:</b> @ViewBag.user.Email</p>
+                        <p><b>Contact Number:</b> @ViewBag.user.ContactNo</p>
+                        <p><b>Booking Date:</b> @ViewBag.book.BookingDate</p>
+                        <p><b>Audi:</b> @ViewBag.book.AudiName</p>
+                        @*<p><b>Multiplex:</b> @ViewBag.Index</p>*@
                     </div>
                 </div>
                 <br />
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <h2>INVOICE</h2>
-
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-xs-6">
 
@@ -252,8 +28,7 @@
                     </div>
                     <div class="col-xs-6 text-right">
 
-                        <p>Booking Date:@ViewBag.book.BookingDate</p>
-                        <p>Audi:@ViewBag.book.AudiName</p>
+                     
 
                     </div>
                 </div>
@@ -276,26 +51,39 @@
                             {
                                 <tr>
 
-                                    <td class="text-center">@item.Movies.MovieName</td>
+                                    <td class="text-left"><b>@item.Movies.MovieName</b></td>
 
-                                    <td class="text-center">@(item.Movies.MoviePrice * item.Quantity)</td>
-                                    <td class="text-right">@(item.Quantity)</td>
+                                    <td class="text-left"><b>@(item.Movies.MoviePrice * item.Quantity)</b></td>
+                                    <td class="text-left"><b>@(item.Quantity)</b></td>
 
-                                    <td class="text-right">@ViewBag.total</td>
+                                    <td class="text-left"><b>@ViewBag.total</b></td>
 
 
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><b>Subtotal</b></td>
+                                    <td class="text-right"><b>@ViewBag.total</b></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">Discount</td>
+                                    <td class="text-right">100</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">Total</td>
+                                    <td class="text-right">@ViewBag.subtotal</td>
                                 </tr>
 
 
                             }
-                            <tr class="text-right" style="color: #F81D2D;">
+                            @*<tr class="text-right" style="color: #F81D2D;">
                                 <td class="text-right"><h4><strong> Sub Total:</strong></h4></td>
                                 <td class="text-left"><h4><strong><i class="fa fa-usd" aria-hidden="true"></i> @(ViewBag.subtotal)</strong></h4></td>
-                            </tr>
+                            </tr>*@
 
                         </tbody>
 
                     </table>
+                    <a asp-action="Index" asp-controller="Home" class="btn btn-success">Home</a>
                 </div>
                 <div>
 

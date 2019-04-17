@@ -16,25 +16,6 @@ namespace UserProject1.Controllers
         public IActionResult Index()
         {
             var movies = context.Movies.ToList();
-
-            int j = 0;
-            var bookmovie = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "bookmovie");
-            int i = 0;
-            if (bookmovie != null)
-            {
-                foreach (var item in bookmovie)
-                {
-                    i++;
-                }
-                if (i != 0)
-                {
-                    foreach (var i1 in bookmovie)
-                    {
-                        j++;
-                    }
-                    HttpContext.Session.SetString("cartitem", j.ToString());
-                }
-            }
             return View(movies);
         }
         public IActionResult Contact()
@@ -50,19 +31,36 @@ namespace UserProject1.Controllers
 
         public IActionResult Movies()
         {
-
-            
             return View();
         }
-        public IActionResult Locations()
+        public IActionResult Index1()
         {
-            return View();
+            var location = context.Locations.ToList();
+            return View(location);
         }
-      
+        public IActionResult Multiplex(int id)
+        {
+                ViewBag.multiplex = context.Multiplexes.ToList();
+                int count = 0;
+                if (ViewBag.multiplex != null)
+                {
+                    foreach (var item in ViewBag.multiplex)
+                    {
+                        count++;
+                    }
+                    if (count != 0)
+                    {
+                        HttpContext.Session.SetString("Location", count.ToString());
+                    }
+                }
+                var booking = context.Multiplexes.Where(x => x.LocationId == id).ToList();
+                ViewBag.Index = booking;
+                TempData["location"] = id;
+                return View(ViewBag.multiplex);
+            }
+        }
     }
 
 
-}
-    
 
       

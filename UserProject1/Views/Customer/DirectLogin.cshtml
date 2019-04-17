@@ -1,75 +1,79 @@
-﻿@{
+﻿@model UserProject1.Models.UserDetails
+@{
     ViewData["Title"] = "Login";
     Layout = null;
 }
 <head>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="~/css/Login.css" />
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    </head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/Login.css" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
     ---- Include the above in your HEAD tag --------
-    <section class="login-block">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 login-sec">
-                    <h2 class="text-center">Login Now</h2>
-                    <form id="loginform" class="form-horizontal" asp-action="DirectLogin" asp-controller="Customer" method="post" role="form">
-                        <div class="form-group">
-                            <label for="UserName" class="text-uppercase">Username</label>
-                            <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">
+<section class="login-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 login-sec">
+                <h2 class="text-center">Login Now</h2>
+                <form id="loginform" class="form-horizontal" asp-action="DirectLogin" asp-controller="Customer" method="post" role="form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                        </div>
-                        <div class="form-group">
-                            <label for="Password" class="text-uppercase">Password</label>
-                            <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
-                            Don't have an account!
-                            <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
-                                <a asp-controller="BookMovie" asp-action="DirectRegister" class="btn btn-lg btn-primary-btn-danger"><b>Sign Up Here</b></a>
-                        </div>
+                    <div class="form-group">
+                        <label for="UserName" class="text-uppercase"><b>Username</b></label>
+                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="Password" class="text-uppercase"><b>Password</b></label>
+                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                        Don't have an account!
+                        <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                            <a asp-controller="BookMovie" asp-action="DirectRegister" class="btn btn-lg btn-primary-btn-danger"><b>Sign Up Here</b></a>
+                    </div>
 
 
-                        <div class="form-check">
+                    <div class="form-check">
 
-                            <button type="submit" class="btn btn-login float-right">Submit</button>
-
-                        </div>
-                    </form>
-
-                </div>
-                <div class="col-md-8 banner-sec">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item active">
-                                <img class="d-block img-fluid" src="https://www.greatbuyz.com/blog/wp-content/uploads/2018/02/top-movies-website-1.png" alt="">
-                                <div class="carousel-caption d-none d-md-block">
-
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block img-fluid" src="http://www.vizz.co/wp-content/uploads/2014/12/Best-apps-to-Book-Movie-tickets-in-India.jpg" alt="">
-                                <div class="carousel-caption d-none d-md-block">
-
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <img class="d-block img-fluid" src="" alt="First slide">
-                                <div class="carousel-caption d-none d-md-block">
-
-                                </div>
-                            </div>
-                        </div>
+                        <button type="submit" class="btn btn-login float-right">Submit</button>
 
                     </div>
+                </form>
+
+            </div>
+            <div class="col-md-8 banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <img class="d-block img-fluid" src="https://www.greatbuyz.com/blog/wp-content/uploads/2018/02/top-movies-website-1.png" alt="">
+                            <div class="carousel-caption d-none d-md-block">
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="http://www.vizz.co/wp-content/uploads/2014/12/Best-apps-to-Book-Movie-tickets-in-India.jpg" alt="">
+                            <div class="carousel-caption d-none d-md-block">
+
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-    </section>
+        </div>
+</section>
 
 
 
