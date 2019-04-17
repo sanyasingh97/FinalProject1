@@ -8,8 +8,13 @@
 <br />
 <form asp-action="Edit" asp-controller="Location">
     <div class="form-group">
-        <label asp-for="LocationName"><b>Multiplex Name</b></label>
+        <label asp-for="LocationName"><b>Location Name</b></label>
         <input type="text" class="form-control" asp-for="LocationName" placeholder="Enter Location Name">
+
+    </div>
+    <div class="form-group">
+        <label asp-for="LocationImage"><b>Location Image</b></label>
+        <input type="text" class="form-control" asp-for="LocationImage" placeholder="Enter Location Image">
 
     </div>
 

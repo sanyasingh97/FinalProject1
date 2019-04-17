@@ -14,9 +14,9 @@ namespace UserProject.Models
         public string MovieImage { get; set; }
         public string MovieDuration { get; set; }
         public string MovieDescription { get; set; }
-        public int AuditoriumId { get; set; }
+        public int MultiplexId { get; set; }
         public DateTime MovieDate { get; set; }
-        public Auditorium Auditorium { get; set; }
+        public Multiplex Multiplex { get; set; }
         public MovieDetail MovieDetail { get; set; }
         public Review Reviews { get; set; }
 

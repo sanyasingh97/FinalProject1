@@ -30,7 +30,7 @@ namespace UserProject1.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Server=TRD-507;Database=a1;Integrated Security=true;");
             }
         }
@@ -77,6 +77,8 @@ namespace UserProject1.Models
             modelBuilder.Entity<Locations>(entity =>
             {
                 entity.HasKey(e => e.LocationId);
+
+                entity.Property(e => e.LocationName).IsRequired();
             });
 
             modelBuilder.Entity<MovieDetails>(entity =>
@@ -95,11 +97,11 @@ namespace UserProject1.Models
             {
                 entity.HasKey(e => e.MovieId);
 
-                entity.HasIndex(e => e.AuditoriumId);
+                entity.HasIndex(e => e.MultiplexId);
 
-                entity.HasOne(d => d.Auditorium)
+                entity.HasOne(d => d.Multiplex)
                     .WithMany(p => p.Movies)
-                    .HasForeignKey(d => d.AuditoriumId);
+                    .HasForeignKey(d => d.MultiplexId);
             });
 
             modelBuilder.Entity<Multiplexes>(entity =>
@@ -107,6 +109,10 @@ namespace UserProject1.Models
                 entity.HasKey(e => e.MultiplexId);
 
                 entity.HasIndex(e => e.LocationId);
+
+                entity.Property(e => e.MultiplexDescription).IsRequired();
+
+                entity.Property(e => e.MultiplexName).IsRequired();
 
                 entity.HasOne(d => d.Location)
                     .WithMany(p => p.Multiplexes)
@@ -116,6 +122,15 @@ namespace UserProject1.Models
             modelBuilder.Entity<Payments>(entity =>
             {
                 entity.HasKey(e => e.PaymentId);
+
+                entity.HasIndex(e => e.BookingId)
+                    .IsUnique();
+
+                entity.Property(e => e.CreatedDate).HasDefaultValueSql("('0001-01-01T00:00:00.0000000')");
+
+                entity.HasOne(d => d.Booking)
+                    .WithOne(p => p.Payments)
+                    .HasForeignKey<Payments>(d => d.BookingId);
             });
 
             modelBuilder.Entity<Reviews>(entity =>

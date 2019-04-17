@@ -16,6 +16,6 @@ namespace UserProject.Models
         public string Time3 { get; set; }
         public int MultiplexId { get; set; }
         public Multiplex Multiplex { get; set; }
-        public List<Movie> Movies { get; set; }
+      
     }
 }

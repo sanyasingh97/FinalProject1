@@ -9,10 +9,10 @@
 
 
 <form asp-action="Create" asp-controller="Movie">
-    <div class="form-group">
+    @*<div class="form-group">
         <label asp-for="AuditoriumId"><b>Auditorium Name</b></label>
         <select class="custom-select my-1 mr-sm-2" asp-for="AuditoriumId" asp-items="ViewBag.auditorium"></select>
-    </div>
+    </div>*@
     <label asp-for="MovieName"><b>Movie Name</b></label>
     <input type="text" class="form-control" asp-for="MovieName" placeholder="Enter Movie Name">
     <div>

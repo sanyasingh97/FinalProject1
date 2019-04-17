@@ -66,6 +66,7 @@ namespace AdminProject.Controllers
             Location location = context.Locations.Where(x => x.LocationId == id).SingleOrDefault();
 
             location.LocationName = a1.LocationName;
+            location.LocationImage = a1.LocationImage;
             context.SaveChanges();
             return RedirectToAction("Index");
 

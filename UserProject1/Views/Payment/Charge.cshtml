@@ -1,0 +1,10 @@
+﻿@model UserProject1.Models.Payments
+@{
+    ViewData["Title"] = "Charge";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>You successfully paid <strong>$5.00</strong></h2>
+
+<a asp-controller="BookMovie" asp-action="Invoice" class="btn btn-info">Generate Ticket</a>
+

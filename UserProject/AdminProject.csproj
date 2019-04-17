@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20190416053627_updatedrelations.cs" />
+    <Compile Remove="Migrations\20190416053627_updatedrelations.Designer.cs" />
+    <Compile Remove="Migrations\20190416053726_updatedrelationss.cs" />
+    <Compile Remove="Migrations\20190416053726_updatedrelationss.Designer.cs" />
+    <Compile Remove="Migrations\20190416054705_updatedrelationsss.cs" />
+    <Compile Remove="Migrations\20190416054705_updatedrelationsss.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.1" />

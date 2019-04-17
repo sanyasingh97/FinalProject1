@@ -25,9 +25,13 @@ namespace AdminProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AudiName");
+
                     b.Property<double>("BookingAmount");
 
                     b.Property<DateTime>("BookingDate");
+
+                    b.Property<string>("ShowTiming");
 
                     b.Property<int>("UserDetailId");
 
@@ -59,9 +63,24 @@ namespace AdminProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<double>("Pay");
+                    b.Property<double>("Amount");
+
+                    b.Property<int>("BookingId");
+
+                    b.Property<int>("Card");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("StripePaymentId");
+
+                    b.Property<int>("UserDetailId");
 
                     b.HasKey("PaymentId");
+
+                    b.HasIndex("BookingId")
+                        .IsUnique();
 
                     b.ToTable("Payments");
                 });
@@ -120,6 +139,8 @@ namespace AdminProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("LocationImage");
+
                     b.Property<string>("LocationName")
                         .IsRequired();
 
@@ -134,8 +155,6 @@ namespace AdminProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AuditoriumId");
-
                     b.Property<DateTime>("MovieDate");
 
                     b.Property<string>("MovieDescription");
@@ -148,9 +167,11 @@ namespace AdminProject.Migrations
 
                     b.Property<double>("MoviePrice");
 
+                    b.Property<int>("MultiplexId");
+
                     b.HasKey("MovieId");
 
-                    b.HasIndex("AuditoriumId");
+                    b.HasIndex("MultiplexId");
 
                     b.ToTable("Movies");
                 });
@@ -191,9 +212,13 @@ namespace AdminProject.Migrations
 
                     b.Property<int>("LocationId");
 
-                    b.Property<string>("MultiplexDescription");
+                    b.Property<string>("MultiplexDescription")
+                        .IsRequired();
 
-                    b.Property<string>("MultiplexName");
+                    b.Property<string>("MultiplexImage");
+
+                    b.Property<string>("MultiplexName")
+                        .IsRequired();
 
                     b.HasKey("MultiplexId");
 
@@ -242,6 +267,14 @@ namespace AdminProject.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
+            modelBuilder.Entity("AdminProject.Models.Payment", b =>
+                {
+                    b.HasOne("AdminProject.Models.Booking", "Booking")
+                        .WithOne("Payment")
+                        .HasForeignKey("AdminProject.Models.Payment", "BookingId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("AdminProject.Models.Review", b =>
                 {
                     b.HasOne("UserProject.Models.Movie", "Movie")
@@ -265,9 +298,9 @@ namespace AdminProject.Migrations
 
             modelBuilder.Entity("UserProject.Models.Movie", b =>
                 {
-                    b.HasOne("UserProject.Models.Auditorium", "Auditorium")
-                        .WithMany("Movies")
-                        .HasForeignKey("AuditoriumId")
+                    b.HasOne("UserProject.Models.Multiplex", "Multiplex")
+                        .WithMany()
+                        .HasForeignKey("MultiplexId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

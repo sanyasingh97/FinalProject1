@@ -13,6 +13,7 @@ namespace UserProject.Models
         public string MultiplexName { get; set; }
         [Required]
         public string MultiplexDescription { get; set; }
+        public string MultiplexImage { get; set; }
         public int LocationId { get; set; }
         public Location Location { get; set; }
         public List<Auditorium> Auditoriums { get; set; }

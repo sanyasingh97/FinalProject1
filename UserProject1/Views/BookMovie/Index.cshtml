@@ -1,18 +1,25 @@
-﻿@model UserProject1.Models.Movies
+﻿@using Microsoft.AspNetCore.Http;
+@model UserProject1.Models.Movies
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/View.cshtml";
 }
+<br />
+<br />
+<br />
+<h3><b>YOUR BOOKINGS!</b></h3>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<br />
+<br />
 
 
 <style type="text/css">
     body {
-        background-image: url(https://png.pngtree.com/thumb_back/fw800/20161101/pngtree-Antique-Old-Vintage-Retro-background-photo-206849.jpg);
-        background-size: cover;
-        background-attachment: fixed;
+        background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NCA0ICA0IDQgHBw0HBwgHCA8IDQcNFREWFhURExMYHSggGCYlJxMTITEhMSkrLi4uFx8zODMsNygtLjcBCgoKDQ0NDg0NDi0ZFRktNysrKy0tNysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAJYBTwMBIgACEQEDEQH/xAAZAAADAQEBAAAAAAAAAAAAAAAAAQIDBAb/xAAZEAEBAQEBAQAAAAAAAAAAAAAAAQIREgP/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAQID/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMAwEAAhEDEQA/APeZ+bXPzaZw0zh2rhGecNJhpnDTOErUZ5wuYaTK5lKsZzC5hpMqmUWM5hUw1mTmQZzKplpMnMorOZPy08q8gy8n5aTJ8Bn5Hlpw+BGfkeWnkeQjPyPLTyPIM/I8tPI4EZeR5a8LgRl5K5bcLyDG5K5beS8gxuU+W9yVyDnuE3DouU3Ko5rhNw6blNyEctwz1h13KLlakcdwz1h23DPWFqRxa+bLXzdusM9YWsx0Zy0zlWctM5ZbiZlpMnMtJlFTMqmVSKkFTMqmVyHIgmRXlUh8BMhyKkVxFRIflY4CfJ8VwcBPAvg4CQrg4gkK4OAkK4OAgcXwcURwvK+DgM/JcacIGfCsa8TcgzsTctbC4qMblNy2sTYDG5Rct7E3Ko57lnrLpuUXIObWWWsOrWUaytSNc5aSDMXIiiRUhyKkRRIqQ5DgCQ5DkVIilIZnIBHw+GgXBwwKADAgYAgYAuDhgCBgCBgCBkBcLigIiwLLgI4ViuBRnYXGnE2AzsTY0TYqMrEWNrEWAx1lnrLexFio0kXInMaSIokXIUUAVIJFRFBg4AkUAgADFIwAABgQMAAAAAAAAAQMAQMgBGAIGQEVigIgrFWEoixLSpsBnYmxpU1UZWIsa2IsBUXExcA4qFDgqoooaBwyiogAAKIYAAQGAAAAAAAAAAAAAAAAAAAEDIARgCAAEmqKiEmxSaompqqVUZ1FaVFEOLiIqAuKiYcFXDhQ0DiomKiAAApgAAZGAAAAAAAAAAAAAAAAAAAAjIAAAIAAKmmVEIqaaomlTqaompqqiiFKuM5Vyg0iozlWC4aJVSoqoqJOUFAjQBkBTAAGCAGAAAAAAAAAAAAAAgAAAAgAABCCpFJQJp2poEmnamqhVFO1FoJlXKxzVyqjaVcrGVcqK1hys5VSg0lUzlVKiqV1HTBYTKcqBgdApggBggBgAAAAAAAAgBggAAHQALpWiDpdBWqArStK0B1NotTaqC1NotRaAtRaLUWqjOaXnTmzprNKjolXK586XNIreVUrGaVNIraVXWU0qUGkqpWXVSorTps+n0F9PqPR9BfT6z6fUF9COn0FBPR0FBPR0FBPR0FDqel0F9LqS6orpdLpdBRdT0ugdpWp6VoK6m1NqbpUVam1N0m6A7UXRXTO6VFa0zui1pnrSoxzppnQCo0zppNEEVpNLmgEVUqpQBVSq6AgcqukAVKfSAH0+gIp9HQAPo6AA6OgAOjoAF0dAAul0ACFpBUHU2gAVqbQATam0BRN0zugBEXSNaAVGetMtaAVH//Z);
     }
 </style>
-<table class=" table table-hover">
+
+<table class=" table table-striped">
     <tr>
         <th>Options</th>
         <th>Id</th>
@@ -31,7 +38,7 @@
             <td><img src="@item.Movies.MovieImage" width="60" /></td>
             <td>@item.Movies.MoviePrice</td>
             <td> <a class="btn btn-default" asp-controller="BookMovie" asp-action="Minus" asp-route-id="@item.Movies.MovieId">-</a>@item.Quantity<a class="btn btn-default" asp-controller="BookMovie" asp-action="Plus" asp-route-id="@item.Movies.MovieId">+</a></td>
-          
+
             <td>@(item.Movies.MoviePrice * item.Quantity)</td>
 
         </tr>
@@ -43,9 +50,15 @@
         </td>
     </tr>
 </table>
+
+<hr />
+<br>
 <br>
 
-<a asp-controller="Customer" asp-action="Index" class="btn btn-success">Continue Booking</a>
-
+<body>
+    <a asp-controller="Customer" asp-action="Index" class="btn btn-success" onclick="Warn();">Proceed</a>
+    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back To Index</a>
+</body>
+</html>
 
 

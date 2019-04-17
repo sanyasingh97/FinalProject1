@@ -16,9 +16,27 @@ namespace UserProject1.Controllers
         public IActionResult Index()
         {
             var movies = context.Movies.ToList();
+
+            int j = 0;
+            var bookmovie = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "bookmovie");
+            int i = 0;
+            if (bookmovie != null)
+            {
+                foreach (var item in bookmovie)
+                {
+                    i++;
+                }
+                if (i != 0)
+                {
+                    foreach (var i1 in bookmovie)
+                    {
+                        j++;
+                    }
+                    HttpContext.Session.SetString("cartitem", j.ToString());
+                }
+            }
             return View(movies);
         }
-         
         public IActionResult Contact()
         {
             return View();
@@ -30,7 +48,19 @@ namespace UserProject1.Controllers
 
         }
 
+        public IActionResult Movies()
+        {
+
+            
+            return View();
+        }
+        public IActionResult Locations()
+        {
+            return View();
+        }
+      
     }
+
 
 }
     

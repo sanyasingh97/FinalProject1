@@ -23,12 +23,16 @@
                             <p class="card-text" style="font-weight:bold;">@item.MovieName</p>
 
                             <p class="card-text" style="font-weight:bold;">@item.MovieDescription</p>
+
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
 
-                                    <a asp-controller="BookMovie" asp-action="Index" asp-route-id="@item.MovieId" type="button" class="btn btn-sm btn-outline-secondary">Book Movie</a>
-                                    <a asp-controller="BookMovie" asp-action="Details" asp-route-id="@item.MovieId" class="btn btn-sm btn-outline-secondary">View Details</a>
+                                    @*<a asp-controller="BookMovie" asp-action="Index" asp-route-id="@item.MovieId" type="button" class="btn btn-sm btn-outline-secondary">Book Movie</a>
+        <a asp-controller="BookMovie" asp-action="Details" asp-route-id="@item.MovieId" class="btn btn-sm btn-outline-secondary">View Details</a>*@
+                                    <a asp-controller="BookMovie" asp-action="Book" asp-route-id="@item.MovieId" class="btn btn-secondary">Book Movie</a>
+                                    &nbsp;
 
+                                    <a asp-controller="BookMovie" asp-action="Details" asp-route-id="@item.MovieId" class="btn btn-primary">Details</a>
 
 
                                 </div>

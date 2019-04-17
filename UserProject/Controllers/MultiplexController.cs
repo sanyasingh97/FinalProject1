@@ -45,6 +45,7 @@ namespace UserProject.Controllers
             Multiplex multiplex = context.Multiplexes.Where(x => x.MultiplexId == id).SingleOrDefault();
             multiplex.MultiplexName = m1.MultiplexName;
             multiplex.MultiplexDescription = m1.MultiplexDescription;
+            multiplex.MultiplexImage = m1.MultiplexImage;
             context.SaveChanges();
             return RedirectToAction("Index");
         }

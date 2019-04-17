@@ -11,12 +11,14 @@ namespace UserProject1.Controllers
     [Route("Location")]
     public class LocationController : Controller
     {
-
-            a1Context context = new a1Context();
+        a1Context context = new a1Context();
         [Route("Index")]
         public IActionResult Index()
         {
-            return View();
+            var location = context.Locations.ToList();
+            return View(location);
+
+           
         }
     }
     }

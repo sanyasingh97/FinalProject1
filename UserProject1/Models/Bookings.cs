@@ -14,8 +14,11 @@ namespace UserProject1.Models
         public double BookingAmount { get; set; }
         public DateTime BookingDate { get; set; }
         public int UserDetailId { get; set; }
+        public string AudiName { get; set; }
+        public string ShowTiming { get; set; }
 
         public UserDetails UserDetail { get; set; }
+        public Payments Payments { get; set; }
         public ICollection<BookingDetails> BookingDetails { get; set; }
     }
 }

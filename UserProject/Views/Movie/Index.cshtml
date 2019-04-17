@@ -19,9 +19,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.MovieName)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.AuditoriumId)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -35,9 +35,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.MovieName)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.AuditoriumId)
-            </td>
+            </td>*@
             <td>
                 <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.MovieId" class="btn btn-info">Details</a>
                 <a asp-controller="Movie" asp-action="Edit" asp-route-id="@item.MovieId" class="btn btn-success">Edit</a>

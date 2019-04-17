@@ -1,0 +1,43 @@
+﻿@model IEnumerable<UserProject1.Models.Multiplexes>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@*<style type="text/css">
+    body {
+        background-image: url(https://img.freepik.com/free-photo/white-plain-wall-surface-background_53876-74688.jpg?size=626&ext=jpg);
+    }
+</style>*@
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in ViewBag.Index)
+            {
+
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="@item.MultiplexImage" class="bd-placeholder-img" width="100%" height="300" card-img-top" />
+
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="card-text" style="font-weight:bold;">@item.MultiplexName</p>
+                                &nbsp;
+                                <p class="card-text" style="font-weight:bold;">@item.MultiplexDescription</p>
+
+                                &nbsp;
+                                &nbsp;
+
+                                <a asp-controller="Customer" asp-action="Movies" asp-route-id="@item.MultiplexId" type="button" class="btn btn-secondary">Select Multiplex</a>
+                                &nbsp;
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>

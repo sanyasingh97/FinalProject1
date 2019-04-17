@@ -18,5 +18,10 @@ namespace UserProject1.Helpers
         var value = session.GetString(key);
         return value == null ? default(T) : JsonConvert.DeserializeObject<T>(value);
     }
-}
+
+        internal static T GetObjectFromJson<T>(HttpContext httpContext)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

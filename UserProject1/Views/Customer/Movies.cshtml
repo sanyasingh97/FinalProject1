@@ -1,0 +1,42 @@
+﻿@model IEnumerable<UserProject1.Models.Movies>
+@{
+    ViewData["Title"] = "Movies";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<style type="text/css">
+    body {
+        background-image: url(https://www.publicdomainpictures.net/pictures/30000/velka/film-background-1334067869u9d.jpg);
+    }
+</style>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="@item.MovieImage" class="bd-placeholder-img" width="100%" height="300" card-img-top" />
+
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <p class="card-text" style="font-weight:bold;">@item.MovieName</p>
+                                &nbsp;
+                                &nbsp;
+
+                                <a asp-controller="BookMovie" asp-action="Book" asp-route-id="@item.MovieId" class="btn btn-secondary">Book Movie</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>

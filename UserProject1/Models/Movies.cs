@@ -16,10 +16,10 @@ namespace UserProject1.Models
         public string MovieImage { get; set; }
         public string MovieDuration { get; set; }
         public string MovieDescription { get; set; }
-        public int AuditoriumId { get; set; }
+        public int MultiplexId { get; set; }
         public DateTime MovieDate { get; set; }
 
-        public Auditoriums Auditorium { get; set; }
+        public Multiplexes Multiplex { get; set; }
         public MovieDetails MovieDetails { get; set; }
         public Reviews Reviews { get; set; }
         public ICollection<BookingDetails> BookingDetails { get; set; }

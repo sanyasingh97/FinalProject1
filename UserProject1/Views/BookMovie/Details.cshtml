@@ -4,51 +4,75 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<style>
-    .mar {
-        margin-left: 150px;
-    }
+@*<style>
+        .mar {
+            margin-left: 150px;
+        }
 
-    .pic:hover {
-        transform: scale(1.5);
-    }
-</style>
-<center><h2>Movie Details</h2></center>
-&nbsp;&nbsp;
-<div class="row">
-    <div class="col-md-4">
-        <img src="@Html.DisplayFor(m=>m.MovieImage)" class="bd-placeholder-img " width="100%" height="300" card-img-top" />
-    </div>
-    <div class="col-md-8">
-        &nbsp;&nbsp;
-        <div class="form-group-mar">
-            <label for="MovieId"> MovieId:  </label>
-            @Html.DisplayFor(m => m.MovieId)
-            <br />
-            <label for="MovieName"> MovieName: </label>
-            @Html.DisplayFor(m => m.MovieName)
-            <br />
-            <label for="MoviePrice"> MoviePrice: </label>
-            @Html.DisplayFor(m => m.MoviePrice)
-            <br />
-            <label for="MovieDuration">MovieDuration: </label>
-            @Html.DisplayFor(m => m.MovieDuration)
-            <br />
-            <label for="MovieDescription">MovieDescription:</label>
-            @Html.DisplayFor(m => m.MovieDescription)
-            <br />
-            <label for="AuditoriumId"> AuditoriumId: </label>
-            @Html.DisplayFor(m => m.AuditoriumId)
-            <br />
-            <br />
+        .pic:hover {
+            transform: scale(1.5);
+        }
+    </style>
+    <center><h2>Movie Details</h2></center>
+    &nbsp;&nbsp;
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@Html.DisplayFor(m=>m.MovieImage)" class="bd-placeholder-img " width="100%" height="300" card-img-top" />
+        </div>
+        <div class="col-md-8">
+            &nbsp;&nbsp;
+            <div class="form-group-mar">
+                <label for="MovieId"> MovieId:  </label>
+                @Html.DisplayFor(m => m.MovieId)
+                <br />
+                <label for="MovieName"> MovieName: </label>
+                @Html.DisplayFor(m => m.MovieName)
+                <br />
+                <label for="MoviePrice"> MoviePrice: </label>
+                @Html.DisplayFor(m => m.MoviePrice)
+                <br />
+                <label for="MovieDuration">MovieDuration: </label>
+                @Html.DisplayFor(m => m.MovieDuration)
+                <br />
+                <label for="MovieDescription">MovieDescription:</label>
+                @Html.DisplayFor(m => m.MovieDescription)
+                <br />
+                @*<label for="AuditoriumId"> AuditoriumId: </label>
+                    @Html.DisplayFor(m => m.AuditoriumId)*@
+@*<br />
+    <br />
+            </div>
         </div>
     </div>
+    <br />*@
+
+
+<style type="text/css">
+    body {
+        background-image: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NCA0ICA0IDQgHBw0HBwgHCA8IDQcNFREWFhURExMYHSggGCYlJxMTITEhMSkrLi4uFx8zODMsNygtLjcBCgoKDQ0NDg0NDi0ZFRktNysrKy0tNysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAJYBTwMBIgACEQEDEQH/xAAZAAADAQEBAAAAAAAAAAAAAAAAAQIDBAb/xAAZEAEBAQEBAQAAAAAAAAAAAAAAAQIREgP/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAQID/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMAwEAAhEDEQA/APeZ+bXPzaZw0zh2rhGecNJhpnDTOErUZ5wuYaTK5lKsZzC5hpMqmUWM5hUw1mTmQZzKplpMnMorOZPy08q8gy8n5aTJ8Bn5Hlpw+BGfkeWnkeQjPyPLTyPIM/I8tPI4EZeR5a8LgRl5K5bcLyDG5K5beS8gxuU+W9yVyDnuE3DouU3Ko5rhNw6blNyEctwz1h13KLlakcdwz1h23DPWFqRxa+bLXzdusM9YWsx0Zy0zlWctM5ZbiZlpMnMtJlFTMqmVSKkFTMqmVyHIgmRXlUh8BMhyKkVxFRIflY4CfJ8VwcBPAvg4CQrg4gkK4OAkK4OAgcXwcURwvK+DgM/JcacIGfCsa8TcgzsTctbC4qMblNy2sTYDG5Rct7E3Ko57lnrLpuUXIObWWWsOrWUaytSNc5aSDMXIiiRUhyKkRRIqQ5DgCQ5DkVIilIZnIBHw+GgXBwwKADAgYAgYAuDhgCBgCBgCBkBcLigIiwLLgI4ViuBRnYXGnE2AzsTY0TYqMrEWNrEWAx1lnrLexFio0kXInMaSIokXIUUAVIJFRFBg4AkUAgADFIwAABgQMAAAAAAAAAQMAQMgBGAIGQEVigIgrFWEoixLSpsBnYmxpU1UZWIsa2IsBUXExcA4qFDgqoooaBwyiogAAKIYAAQGAAAAAAAAAAAAAAAAAAAEDIARgCAAEmqKiEmxSaompqqVUZ1FaVFEOLiIqAuKiYcFXDhQ0DiomKiAAApgAAZGAAAAAAAAAAAAAAAAAAAAjIAAAIAAKmmVEIqaaomlTqaompqqiiFKuM5Vyg0iozlWC4aJVSoqoqJOUFAjQBkBTAAGCAGAAAAAAAAAAAAAAgAAAAgAABCCpFJQJp2poEmnamqhVFO1FoJlXKxzVyqjaVcrGVcqK1hys5VSg0lUzlVKiqV1HTBYTKcqBgdApggBggBgAAAAAAAAgBggAAHQALpWiDpdBWqArStK0B1NotTaqC1NotRaAtRaLUWqjOaXnTmzprNKjolXK586XNIreVUrGaVNIraVXWU0qUGkqpWXVSorTps+n0F9PqPR9BfT6z6fUF9COn0FBPR0FBPR0FBPR0FDqel0F9LqS6orpdLpdBRdT0ugdpWp6VoK6m1NqbpUVam1N0m6A7UXRXTO6VFa0zui1pnrSoxzppnQCo0zppNEEVpNLmgEVUqpQBVSq6AgcqukAVKfSAH0+gIp9HQAPo6AA6OgAOjoAF0dAAul0ACFpBUHU2gAVqbQATam0BRN0zugBEXSNaAVGetMtaAVH//Z);
+    }
+</style>
+
+
+<div class="card mb-2" style="max-width: 40%;">
+    @*<div class="row no-gutters">
+        <div class="col-md-8">*@
+    <img src="@Html.DisplayFor(m=>m.MovieImage)" class="card-img">
 </div>
-<br />
-<a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back To List</a>
-    &nbsp;
-<a asp-controller="BookMovie" asp-action="Book" class="btn btn-info">Book Movie</a>
+<div class="col-md-8">
+    <div class="card-body">
+
+        <p class="card-text"><b> MOVIE NAME: </b> @Html.DisplayFor(m => m.MovieName)</p>
+        <p class="card-text"><b> MOVIE DURATION: </b>  @Html.DisplayFor(m => m.MovieDuration)</p>
+        <p class="card-text"><b> MOVIE PRICE: </b> @Html.DisplayFor(m => m.MoviePrice)</p>
+
+        <p class="card-text"> @Html.DisplayFor(m => m.MovieDescription)</p>
 
 
 
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Back To List</a>
+        &nbsp;
+        <a asp-controller="BookMovie" asp-action="Book" class="btn btn-info">Book Movie</a>
 
+    </div>
+</div>

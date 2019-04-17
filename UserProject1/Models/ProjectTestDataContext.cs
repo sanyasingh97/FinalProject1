@@ -22,14 +22,18 @@ namespace UserProject1.Models
         public virtual DbSet<MovieDetails> MovieDetails { get; set; }
         public virtual DbSet<Movies> Movies { get; set; }
         public virtual DbSet<Multiplexes> Multiplexes { get; set; }
+        public virtual DbSet<Payments> Payments { get; set; }
+        public virtual DbSet<Reviews> Reviews { get; set; }
         public virtual DbSet<UserDetails> UserDetails { get; set; }
+     
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=TRD-506;Database=ProjectTestData;Integrated Security=true;");
+                optionsBuilder.UseSqlServer("Server=TRD-507;Database=a1;Integrated Security=true;");
             }
         }
 
@@ -103,11 +107,15 @@ namespace UserProject1.Models
             {
                 entity.HasKey(e => e.MovieId);
 
-                entity.HasIndex(e => e.AuditoriumId);
+                //entity.HasIndex(e => e.AuditoriumId);
 
-                entity.HasOne(d => d.Auditorium)
-                    .WithMany(p => p.Movies)
-                    .HasForeignKey(d => d.AuditoriumId);
+                entity.Property(e => e.MovieDuration).IsRequired();
+
+                entity.Property(e => e.MovieName).IsRequired();
+
+                //entity.HasOne(d => d.Auditorium)
+                //    .WithMany(p => p.Movies)
+                //    .HasForeignKey(d => d.AuditoriumId);
             });
 
             modelBuilder.Entity<Multiplexes>(entity =>
@@ -121,6 +129,34 @@ namespace UserProject1.Models
                 entity.HasOne(d => d.Location)
                     .WithMany(p => p.Multiplexes)
                     .HasForeignKey(d => d.LocationId);
+            });
+
+            modelBuilder.Entity<Payments>(entity =>
+            {
+                entity.HasKey(e => e.PaymentId);
+            });
+
+            modelBuilder.Entity<Reviews>(entity =>
+            {
+                entity.HasKey(e => new { e.UserDetailId, e.MovieId });
+
+                entity.HasIndex(e => e.MovieId)
+                    .IsUnique();
+
+                entity.HasIndex(e => e.UserDetailId)
+                    .IsUnique();
+
+                entity.HasIndex(e => new { e.MovieId, e.UserDetailId })
+                    .HasName("AK_Reviews_MovieId_UserDetailId")
+                    .IsUnique();
+
+                entity.HasOne(d => d.Movie)
+                    .WithOne(p => p.Reviews)
+                    .HasForeignKey<Reviews>(d => d.MovieId);
+
+                entity.HasOne(d => d.UserDetail)
+                    .WithOne(p => p.Reviews)
+                    .HasForeignKey<Reviews>(d => d.UserDetailId);
             });
 
             modelBuilder.Entity<UserDetails>(entity =>

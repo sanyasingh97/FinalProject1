@@ -11,6 +11,7 @@ namespace UserProject.Models
         public int LocationId { get; set; }
         [Required]
         public string LocationName { get; set; }
+        public string LocationImage { get; set; }
         public List<Multiplex> Multiplexes { get; set; }
     }
 }

@@ -1,64 +1,74 @@
-﻿@model UserProject1.Models.UserDetails
-
-
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-
-<style type="text/css">
-
-
-    body {
-        background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiG6ll6syMc948qlchoR62Lt72HactAC9Hs1DZQiIou8EQ-6-v );
-        background-size: cover;
-        background-attachment: fixed;
-    }
-</style>
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/Login.css" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
 <!------ Include the above in your HEAD tag ---------->
-<div class="container">
-    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <div class="panel-title">Sign In</div>
+<section class="login-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 login-sec">
+                <h2 class="text-center">Login Now</h2>
+                <p>@ViewBag.Error</p>
+                <form id="loginform" class="form-horizontal" asp-action="Index" asp-controller="Customer" method="post" role="form">
+                    <div class="form-group">
+                        <label for="UserName" class="text-uppercase">Username</label>
+                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="Password" class="text-uppercase">Password</label>
+                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                        Don't have an account!
+                        <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                            <a asp-controller="BookMovie" asp-action="Register" class="btn btn-lg btn-primary-btn-danger"><b>Sign Up Here</b></a>
+                    </div>
+
+
+                    <div class="form-check">
+
+                        <button type="submit" class="btn btn-login float-right">Submit</button>
+
+                    </div>
+                </form>
 
             </div>
-            <div style="padding-top:30px" class="panel-body">
-                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-            
-                    <p>@ViewBag.Error</p>
-               
-                    <form id="loginform" class="form-horizontal" role="form" method="post" asp-controller="Customer" asp-action="Login">
-
-                    <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <label asp-for="UserName"><b>Username</b></label>
-                        <input type="text" class="form-control" asp-for="UserName" placeholder="Enter username">
-                    </div>
-
-                    <div style="margin-bottom: 25px" class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <label asp-for="Password"><b> Password</b></label>
-                        <input type="password" class="form-control" asp-for="Password" placeholder="Enter password">
-                    </div>
-
-                    <div style="margin-top:10px" class="form-group">
-                        <!-- Button -->
-                        <div class="col-sm-12 controls">
-                            <button class="btn btn-lg btn-primary btn-success" type="submit">Sign in</button>
+            <div class="col-md-8 banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <img class="d-block img-fluid" src="https://www.greatbuyz.com/blog/wp-content/uploads/2018/02/top-movies-website-1.png" alt="">
+                            <div class="carousel-caption d-none d-md-block">
+                               
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-md-12 control">
-                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%">
-                                Don't have an account!
-                                <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
-                                    <a asp-controller="Customer" asp-action="Register" class="btn btn-lg btn-primary-btn-danger"><b>Sign Up Here</b></a>
-
-                                </a>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="http://www.vizz.co/wp-content/uploads/2014/12/Best-apps-to-Book-Movie-tickets-in-India.jpg" alt="">
+                            <div class="carousel-caption d-none d-md-block">
+          
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid" src="" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                             
                             </div>
                         </div>
                     </div>
-                </form>
+
+                </div>
+            </div>
+        </div>
+</section>
+

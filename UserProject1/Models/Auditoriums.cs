@@ -5,11 +5,6 @@ namespace UserProject1.Models
 {
     public partial class Auditoriums
     {
-        public Auditoriums()
-        {
-            Movies = new HashSet<Movies>();
-        }
-
         public int AuditoriumId { get; set; }
         public string AuditoriumName { get; set; }
         public string AuditoriumDescription { get; set; }
@@ -20,6 +15,5 @@ namespace UserProject1.Models
         public int MultiplexId { get; set; }
 
         public Multiplexes Multiplex { get; set; }
-        public ICollection<Movies> Movies { get; set; }
     }
 }
